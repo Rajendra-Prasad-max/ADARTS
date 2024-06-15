@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<!-- cart/payment.html -->
+<!-- cart/payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete your payment</title>
+    <style>
+        /* Hide the default Razorpay button */
+        .razorpay-payment-button {
+            display: none;
+        }
+        /* Custom styled button */
+        #custom-razorpay-button {
+            background-color: #F37254;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #custom-razorpay-button:hover {
+            background-color: #c95c44;
+        }
+    </style>
+</head>
+<div class="hero-wrap hero-bread" align="center">
+<body>
+    <h2>Complete your payment</h2>
+    <form id="paymentForm" action="{% url 'payment_success' %}" method="POST">
+        {% csrf_token %}
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ razorpay_key }}"
+            data-amount="{{ total|floatformat:2|floatformat:0 }}00"
+            data-currency="INR"
+            data-order_id="{{ order_id }}"
+            data-buttontext="Pay {{ total }}"
+            data-name="Your Shop"
+            data-description="Order Payment"
+            data-image="https://your_logo_url"
+            data-prefill.name="{{ user_name }}"
+            data-prefill.email="{{ user_email }}"
+            data-theme.color="#F37254"
+        ></script>
+        <input type="hidden" name="order_id" value="{{ order_id }}">
+        <!-- Custom button -->
+        <button type="button" id="custom-razorpay-button">Pay {{ total }}</button>
+    </form>
+    <script>
+        document.getElementById('custom-razorpay-button').onclick = function() {
+            document.querySelector('.razorpay-payment-button').click();
+        };
+    </script>
+</body>
+    </div>
+</html>
+
+{% endblock %}

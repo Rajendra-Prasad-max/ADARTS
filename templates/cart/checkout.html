@@ -1,0 +1,123 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span>
+                    <span>Checkout</span></p>
+                <h1 class="mb-0 bread">Checkout</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        {% if total %}
+        <div class="row justify-content-center">
+            <form action="{% url 'checkout' %}" class="billing-form" method="POST">
+                {% csrf_token %}
+                <div class="col-xl-7 ftco-animate">
+                    <h3 class="mb-4 billing-heading">Billing Details</h3>
+                    <div class="row align-items-end">
+                        <div class="w-100"></div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                                {% if form.name.errors %}
+                                    <div class="alert alert-danger">{{ form.name.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="address1">Address Line 1</label>
+                                <input type="text" name="address1" class="form-control" placeholder="Street Address" required>
+                                {% if form.address1.errors %}
+                                    <div class="alert alert-danger">{{ form.address1.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="address2">Address Line 2</label>
+                                <input type="text" name="address2" class="form-control" placeholder="Apartment, Suite, etc.">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" name="state" class="form-control" placeholder="State" required>
+                                {% if form.state.errors %}
+                                    <div class="alert alert-danger">{{ form.state.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" name="city" class="form-control" placeholder="City" required>
+                                {% if form.city.errors %}
+                                    <div class="alert alert-danger">{{ form.city.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="pincode">Pincode</label>
+                                <input type="text" name="pincode" class="form-control" placeholder="Pincode" required>
+                                {% if form.pincode.errors %}
+                                    <div class="alert alert-danger">{{ form.pincode.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="mobile">Mobile</label>
+                                <input type="text" name="mobile" class="form-control" placeholder="Mobile Number" required>
+                                {% if form.mobile.errors %}
+                                    <div class="alert alert-danger">{{ form.mobile.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5">
+                    <div class="row mt-5 pt-3">
+                        <div class="col-md-12 d-flex mb-5">
+                            <div class="cart-detail cart-total p-3 p-md-4">
+                                <h3 class="billing-heading mb-4">Cart Total</h3>
+                                <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span>INR {{total}}</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery</span>
+                                    <span>INR 0.00</span>
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    <span>INR {{total}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="cart-detail p-3 p-md-4">
+                                <input class="btn btn-primary py-3 px-4" type="submit" value="Place an order">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% else %}
+            <p>Your cart is empty, nothing to checkout </p>
+        {% endif %}
+    </div>
+</section> <!-- .section -->
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% include 'base/header.html' %}
+{% load static %}
+
+{% block content %}
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row block-9">
+            <div class="col-md-6 order-md-last d-flex">
+                <form class="bg-white p-5 contact-form" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="token">Enter the token from Google Authenticator</label>
+                        <input type="text" name="token" class="form-control" placeholder="123456" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Verify TOTP" class="btn btn-primary py-3 px-5">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 d-flex">
+                <div class="bg-white">
+                    <img src="{% static 'images/image_5.jpg' %}" width="100%" height="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center">
+				<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>Cart</span>
+				</p>
+				<h1 class="mb-0 bread">Order placed</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section class="ftco-section ftco-cart">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 ftco-animate">
+				{{msg}}
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
+
+
+<script>
+	$(document).ready(function () {
+
+		var quantitiy = 0;
+		$('.quantity-right-plus').click(function (e) {
+
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			var quantity = parseInt($('#quantity').val());
+
+			// If is not undefined
+
+			$('#quantity').val(quantity + 1);
+
+
+			// Increment
+
+		});
+
+		$('.quantity-left-minus').click(function (e) {
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			var quantity = parseInt($('#quantity').val());
+
+			// If is not undefined
+
+			// Increment
+			if (quantity > 0) {
+				$('#quantity').val(quantity - 1);
+			}
+		});
+
+	});
+</script>
+{% endblock %}

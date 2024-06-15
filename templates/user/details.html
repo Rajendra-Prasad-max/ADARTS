@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>Contact us</span></p>
+            <h1 class="mb-0 bread">My Profile Details</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+        {% if instance.picture %}
+        <img src="{{instance.picture.url}}">
+        {% endif %}
+        <table class="table table-bordered">
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>username</th>
+
+            </tr>
+          <tbody>
+            <tr>
+              <td>{{instance.first_name }}</td>
+              <td>{{instance.last_name }}</td>
+              <td>{{instance.email }}</td>
+              <td>{{instance.username }}</td>
+              <td><a href="/user/update/{{instance.id}}">
+                <button class="btn btn-info btn-sm " id="{{ instance.id }}">   Edit
+                  </button></a> </td></td>
+            </tr>
+          </tbody>
+        </table>
+      
+      </div>
+    </section>
+{% endblock %}

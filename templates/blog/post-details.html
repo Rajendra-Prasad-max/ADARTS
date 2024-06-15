@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>Blog</span></p>
+            <h1 class="mb-0 bread">Blog</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+						<h2 class="mb-3">{{ post.title }}</h2>
+            <p>{{ post.content|safe }}</p>
+            <div class="tag-widget post-tag-container mb-5 mt-5">
+              <div class="tagcloud">
+<!--                 {% for tag in post.tag.all %}
+                <a href="#" class="tag-cloud-link">{{ tag }}</a>
+                {% endfor %}
+ -->              </div>
+            </div>
+
+            <div class="about-author d-flex p-4 bg-light">
+              <div class="bio align-self-md-center mr-4">
+                <img src="{{ post.author.photo.url }}" alt="Image placeholder" class="img-fluid mb-4">
+              </div>
+              <div class="desc align-self-md-center">
+                <h3>{{ post.author }}</h3>
+                <p>{{ post.author.about }}</p>
+              </div>
+            </div>
+
+
+          </div> <!-- .col-md-8 -->
+          {% include 'blog/sidebar.html' %}
+        </div>
+      </div>
+    </section> <!-- .section -->
+{% endblock %}

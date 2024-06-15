@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>Edit profile</span></p>
+            <h1 class="mb-0 bread">Edit Profile </h1>
+          </div>
+
+          <form class="bg-white p-5 contact-form" enctype="multipart/form-data" action="{% url 'user_update' id=instance.id %}" method="post">
+            {% csrf_token %} {% for field in form %}
+            
+            <div class="form-group" style="color: black;"> 
+              {{field.errors}}
+              {{field.label}} :  {{field}}
+            </div>
+            {% endfor %}
+            <div class="form-group">
+              <input type="submit" value="Update" class="btn btn-primary py-3 px-5">
+            </div> 
+            
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+
+
+    </section>
+{% endblock %}
