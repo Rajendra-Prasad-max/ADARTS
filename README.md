@@ -82,7 +82,7 @@ python manage.py runserver
 <p align="center">
   More view on landing page
 </p>
-<img src="page 1.png">  
+<img src="page 2.png">  
 </td>
 </table>
 
