@@ -4,7 +4,7 @@
 
 --> Clone the repository using the command below :
 ```bash
-git clone https://github.com/sajib1066/django-ecommerce.git
+git clone https://github.com/Rajendra-Prasad-max/ADARTS.git
 
 ```
 
