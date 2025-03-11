@@ -75,14 +75,14 @@ python manage.py runserver
 <p align="center">
   Landing page
 </p>
-<img src="https://user-images.githubusercontent.com/47305153/186664016-c0aece16-cfe3-475f-8ca6-c5cac62c9f88.PNG">
+<img src="/page1.PNG">
 </td> 
 <td width="50%">
 <br>
 <p align="center">
   More view on landing page
 </p>
-<img src="https://user-images.githubusercontent.com/47305153/186664028-a661886b-88b5-474d-bcd8-1162258ab6d1.PNG">  
+<img src="/page2.PNG">  
 </td>
 </table>
 
