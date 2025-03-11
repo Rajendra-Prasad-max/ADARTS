@@ -75,14 +75,14 @@ python manage.py runserver
 <p align="center">
   Landing page
 </p>
-<img src="/page1.PNG">
+<img src="page 1.png">
 </td> 
 <td width="50%">
 <br>
 <p align="center">
   More view on landing page
 </p>
-<img src="/page2.PNG">  
+<img src="page 1.png">  
 </td>
 </table>
 
